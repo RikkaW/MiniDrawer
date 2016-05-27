@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="drawer_item_icon_normal">#757575</color>
+    <color name="drawer_item_icon_checked">#e0e0e0</color>
+
+    <color name="drawer_item_checked_foreground">#0fffffff</color>
+</resources>

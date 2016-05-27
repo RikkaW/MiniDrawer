@@ -33,7 +33,7 @@
 
         <!-- right layout -->
         <FrameLayout
-            android:background="#FFF"
+            android:background="?android:attr/windowBackground"
             android:elevation="4dp"
             android:clickable="true"
             android:layout_width="match_parent"

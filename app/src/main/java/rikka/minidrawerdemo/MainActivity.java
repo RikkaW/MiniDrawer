@@ -3,6 +3,7 @@ package rikka.minidrawerdemo;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
@@ -32,11 +33,14 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        findViewById(R.id.button).setOnLongClickListener(new View.OnLongClickListener() {
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View v) {
-                Toast.makeText(v.getContext(), "QAQ", Toast.LENGTH_SHORT).show();
-                return false;
+            public void onClick(View v) {
+                AppCompatDelegate.setDefaultNightMode(
+                        AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES ?
+                                AppCompatDelegate.MODE_NIGHT_NO : AppCompatDelegate.MODE_NIGHT_YES);
+
+                recreate();
             }
         });
     }

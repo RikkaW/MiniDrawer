@@ -225,7 +225,6 @@ public class MiniDrawerLayout extends FrameLayout {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
                 //Log.d("QAQ", "ACTION_DOWN");
@@ -255,7 +254,7 @@ public class MiniDrawerLayout extends FrameLayout {
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (mInArea) {
-                    setTransX(mSavedTransX + (int) (ev.getX() - mXDown));
+                    //setTransX(mSavedTransX + (int) (ev.getX() - mXDown));
 
                     final long timeDelta = SystemClock.elapsedRealtime() - mDownTime;
                     final float xDelta = ev.getX() - mXDown;
@@ -269,6 +268,7 @@ public class MiniDrawerLayout extends FrameLayout {
                         mInterceptTouch = true;
 
                         mDrawerContainer.dragStarted(isExpanded());
+                        Log.d("mInterceptTouch = true", "");
                     }
                 }
                 break;
@@ -282,8 +282,6 @@ public class MiniDrawerLayout extends FrameLayout {
 
     @Override
     public boolean onTouchEvent(@NonNull MotionEvent ev) {
-        //Log.d("onTouchEvent", "" + ev.getActionMasked());
-
         switch (ev.getActionMasked()) {
             case MotionEvent.ACTION_MOVE:
                 //Log.d("QAQ", "ACTION_MOVE " + mInArea);

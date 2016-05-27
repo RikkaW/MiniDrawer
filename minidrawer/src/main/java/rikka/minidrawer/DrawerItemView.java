@@ -48,7 +48,7 @@ class DrawerItemView extends ForegroundLinearLayout implements Checkable, View.O
 
         if (getForeground() == null) {
             StateListDrawable drawable = new StateListDrawable();
-            drawable.addState(CHECKED_STATE_SET, new ColorDrawable(Color.parseColor("#18000000")));
+            drawable.addState(CHECKED_STATE_SET, new ColorDrawable(ContextCompat.getColor(getContext(), R.color.drawer_item_checked_foreground)));
             drawable.addState(View.EMPTY_STATE_SET, new ColorDrawable(Color.TRANSPARENT));
 
             setForeground(drawable);
@@ -80,7 +80,7 @@ class DrawerItemView extends ForegroundLinearLayout implements Checkable, View.O
         if (icon != null) {
             icon = DrawableCompat.wrap(icon.getConstantState().newDrawable()).mutate();
             icon.setBounds(0, 0, mIconSize, mIconSize);
-            DrawableCompat.setTintList(icon, ContextCompat.getColorStateList(getContext(), R.color.drawer_item));
+            DrawableCompat.setTintList(icon, ContextCompat.getColorStateList(getContext(), R.color.drawer_item_icon));
         }
         mImageView.setImageDrawable(icon);
     }

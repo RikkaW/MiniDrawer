@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="text_color_grey">#757575</color>
-    <color name="text_color_black">#212121</color>
+    <color name="drawer_item_icon_normal">#757575</color>
+    <color name="drawer_item_icon_checked">#212121</color>
+
+    <color name="drawer_item_checked_foreground">#18000000</color>
 </resources>
