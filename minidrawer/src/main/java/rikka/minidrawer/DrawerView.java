@@ -27,6 +27,7 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
     private Map<Integer, DrawerItemView> mMap;
 
     private boolean mMiniMode;
+    private int mCheckedMenuId;
 
     public DrawerView(Context context) {
         this(context, null);
@@ -117,6 +118,8 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
             mOnNavigationItemSelectedListener.onNavigationItemSelected(item);
         }
 
+        mCheckedMenuId = item.getItemId();
+
         if (!item.isCheckable()) {
             return;
         }
@@ -141,5 +144,9 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
 
     public void setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener onDrawerItemClickedListener) {
         mOnNavigationItemSelectedListener = onDrawerItemClickedListener;
+    }
+
+    public int getCheckedItemId() {
+        return mCheckedMenuId;
     }
 }

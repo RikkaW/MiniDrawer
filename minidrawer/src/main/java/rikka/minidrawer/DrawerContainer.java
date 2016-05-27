@@ -79,6 +79,11 @@ class DrawerContainer extends NestedScrollView implements NavigationView.OnNavig
         mDrawer.setCheckedItem(id);
     }
 
+    public int getCheckedItemId() {
+        return mMiniDrawer.getCheckedItemId();
+    }
+
+
     public void setDrawerByTransX(int x, int width) {
         float percent = (float) x / width;
 

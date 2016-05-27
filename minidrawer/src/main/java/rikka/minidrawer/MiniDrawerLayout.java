@@ -4,9 +4,14 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.os.ParcelableCompat;
+import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.MenuItem;
@@ -291,5 +296,62 @@ public class MiniDrawerLayout extends FrameLayout {
 
     public void setCheckedItem(int id) {
         mDrawerContainer.setCheckedItem(id);
+    }
+
+    @Override
+    protected Parcelable onSaveInstanceState() {
+        Parcelable superState = super.onSaveInstanceState();
+        SavedState state = new SavedState(superState);
+        state.drawerState = new Bundle();
+        state.drawerState.putInt("MenuId", mDrawerContainer.getCheckedItemId());
+        state.drawerState.putInt("ScrollY", mDrawerContainer.getScrollY());
+        return state;
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Parcelable savedState) {
+        if (!(savedState instanceof SavedState)) {
+            super.onRestoreInstanceState(savedState);
+            return;
+        }
+        SavedState state = (SavedState) savedState;
+        super.onRestoreInstanceState(state.getSuperState());
+        int id = state.drawerState.getInt("MenuId", -1);
+        if (id != -1) {
+            mDrawerContainer.setCheckedItem(id);
+        }
+        mDrawerContainer.setScrollY(state.drawerState.getInt("ScrollY", 0));
+    }
+
+    public static class SavedState extends BaseSavedState {
+        public Bundle drawerState;
+
+        public SavedState(Parcel in, ClassLoader loader) {
+            super(in);
+            drawerState = in.readBundle(loader);
+        }
+
+        public SavedState(Parcelable superState) {
+            super(superState);
+        }
+
+        @Override
+        public void writeToParcel(@NonNull Parcel dest, int flags) {
+            super.writeToParcel(dest, flags);
+            dest.writeBundle(drawerState);
+        }
+
+        public static final Parcelable.Creator<SavedState> CREATOR
+                = ParcelableCompat.newCreator(new ParcelableCompatCreatorCallbacks<SavedState>() {
+            @Override
+            public SavedState createFromParcel(Parcel parcel, ClassLoader loader) {
+                return new SavedState(parcel, loader);
+            }
+
+            @Override
+            public SavedState[] newArray(int size) {
+                return new SavedState[size];
+            }
+        });
     }
 }
