@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rikka.minidrawer.DrawerItemView2
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:gravity="center_vertical"
+    android:background="?attr/selectableItemBackground"
+    android:paddingLeft="24dp"
+    android:paddingRight="24dp"
+    android:minHeight="56dp"
+    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+    android:textSize="14sp"
+    android:drawablePadding="24dp"
+    tools:text="@string/app_name"
+    tools:drawableStart="@drawable/ic_build_black_24dp">
+
+</rikka.minidrawer.DrawerItemView2>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_build_black_24dp"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/nav_home2"
+            app:actionLayout="@layout/drawer_item"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Home2"/>
+
+        <item
+            android:id="@+id/nav_home3"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Home3"/>
+
+        <item
+            android:id="@+id/nav_home4"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Home4"/>
+
+        <item
+            android:id="@+id/nav_home5"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Home5"/>
+
+        <item
+            android:id="@+id/nav_home6"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="prprp"/>
+
+        <item
+            android:id="@+id/nav_home7"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="Nya"/>
+
+        <item
+            android:id="@+id/nav_home8"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="QAQ"/>
+
+        <item
+            android:id="@+id/nav_home9"
+            android:icon="@drawable/ic_android_black_24dp"
+            android:title="OAQ"/>
+    </group>
+
+    <group
+        android:checkableBehavior="none"
+        android:id="@+id/nav_id">
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="Settings"/>
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/ic_info_black_24dp"
+            android:title="About"/>
+    </group>
+
+</menu>

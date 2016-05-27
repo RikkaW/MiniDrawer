@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MiniDrawerLayout">
+        <attr name="drawer_menu" format="reference"/>
+        <attr name="drawer_width" format="dimension"/>
+        <attr name="drawer_padding" format="dimension"/>
+        <attr name="drawer_width_expanded" format="dimension"/>
+    </declare-styleable>
+</resources>
