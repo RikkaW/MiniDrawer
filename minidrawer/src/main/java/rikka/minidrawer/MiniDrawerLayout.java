@@ -141,7 +141,7 @@ public class MiniDrawerLayout extends FrameLayout {
         mAnimator.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-
+                mDrawerContainer.animationStart(isExpanded());
             }
 
             @Override

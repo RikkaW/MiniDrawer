@@ -110,6 +110,12 @@ class DrawerContainer extends NestedScrollView implements NavigationView.OnNavig
         }
     }
 
+    public void animationStart(boolean expanded) {
+        if (expanded) {
+            getLayoutParams().width = mWidthExpanded;
+        }
+    }
+
     public void animationEnd(boolean expanded) {
         if (!expanded) {
             mMiniDrawer.setVisibility(VISIBLE);
