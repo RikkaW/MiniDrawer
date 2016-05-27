@@ -3,17 +3,23 @@ package rikka.minidrawer;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.os.ParcelableCompat;
 import android.support.v4.os.ParcelableCompatCreatorCallbacks;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,6 +42,9 @@ public class MiniDrawerLayout extends FrameLayout {
 
     private boolean mExpanded;
 
+    private Drawable mShadowDrawable;
+    private int mShadowWidth;
+
     private NavigationView.OnNavigationItemSelectedListener mNavigationItemSelectedListener;
 
     public MiniDrawerLayout(Context context) {
@@ -50,6 +59,11 @@ public class MiniDrawerLayout extends FrameLayout {
         super(context, attrs, defStyleAttr);
 
         mConfiguration = ViewConfiguration.get(context);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            mShadowDrawable = ContextCompat.getDrawable(getContext(), R.drawable.ic_vertical_shadow_start_4dp);
+            mShadowWidth = (int) (Resources.getSystem().getDisplayMetrics().density * 4);
+        }
 
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.MiniDrawerLayout, defStyleAttr, 0);
 
@@ -85,7 +99,7 @@ public class MiniDrawerLayout extends FrameLayout {
                 return false;
             }
         });
-        addView(mDrawerContainer);
+        addView(mDrawerContainer, 0);
 
         setExpanded(false);
     }
@@ -166,6 +180,18 @@ public class MiniDrawerLayout extends FrameLayout {
             }
         });
         mAnimator.start();
+    }
+
+    @Override
+    protected void dispatchDraw(@NonNull Canvas canvas) {
+        super.dispatchDraw(canvas);
+
+        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
+            mShadowDrawable.setBounds((int) mFrame.getX() - mShadowWidth, (int) mFrame.getY(), (int) mFrame.getX(),
+                    (int) mFrame.getY() + mFrame.getHeight());
+
+            mShadowDrawable.draw(canvas);
+        }
     }
 
     private ValueAnimator mAnimator;
