@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * Created by Rikka on 2016/5/25.
  */
-class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemView.OnDrawerItemClickedListener {
+class DrawerView extends LinearLayout implements DrawerItemView.OnDrawerItemClickedListener {
     private SupportMenuInflater mMenuInflater;
 
     private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
