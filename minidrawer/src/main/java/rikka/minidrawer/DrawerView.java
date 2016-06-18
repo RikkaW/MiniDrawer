@@ -22,7 +22,6 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
 
     private NavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
 
-    private LinearLayout mLinearLayout;
     private Menu mMenu;
     private Map<Integer, DrawerItemView> mMap;
 
@@ -36,16 +35,10 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
     public DrawerView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        //setVerticalScrollBarEnabled(false);
-
         mMenu = new NavigationMenu(context);
         mMap = new HashMap<>();
 
         setOrientation(LinearLayout.VERTICAL);
-        /*mLinearLayout = new LinearLayout(getContext());
-        mLinearLayout.setOrientation(LinearLayout.VERTICAL);
-        mLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-        addView(mLinearLayout);*/
     }
 
     public boolean isMiniMode() {
@@ -74,23 +67,21 @@ class DrawerView extends LinearLayout/*NestedScrollView*/ implements DrawerItemV
     }
 
     public void inflateMenu(int resId) {
-        /*mLinearLayout.*/removeAllViews();
+        removeAllViews();
 
         getMenuInflater().inflate(resId, mMenu);
 
         for (int i = 0; i < mMenu.size(); i++) {
             MenuItem item = mMenu.getItem(i);
-            setMenuItem(i, item);
+            if (item.isVisible()) {
+                setMenuItem(i, item);
+            }
         }
     }
 
     private int mLastGroupId;
 
     private void setMenuItem(int index, MenuItem item) {
-        /*if (!item.isCheckable() && isMiniMode()) {
-            return;
-        }*/
-
         if (index == 0) {
             mLastGroupId = item.getGroupId();
         } else if (mLastGroupId != item.getGroupId()) {
